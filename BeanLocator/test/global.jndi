@@ -1,3 +1,0 @@
-#Configuration for the application-wide defaults
-module.name=BeanLocatorModule
-application.name=BeanLocatorApp
