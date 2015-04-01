@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ejb-jar xmlns = "http://java.sun.com/xml/ns/javaee" 
+         version = "3.1" 
+         xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation = "http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd">
+    <interceptors>
+        <interceptor>
+            <interceptor-class>com.abien.patterns.aop.interceptors.NicenessExtender</interceptor-class>
+        </interceptor>
+    </interceptors>
+    <assembly-descriptor>
+        <interceptor-binding>
+            <ejb-name>*</ejb-name>
+            <interceptor-order>
+                <interceptor-class>com.abien.patterns.aop.interceptors.NicenessExtender</interceptor-class>
+            </interceptor-order>
+        </interceptor-binding>
+    </assembly-descriptor>
+</ejb-jar>

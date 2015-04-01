@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="ClientXMLBean">
+      <implementation-class>com.abien.samples.di.client.ClientXMLBean</implementation-class>
+    </service>
+    <service name="ClientAnnotationBean">
+      <implementation-class>com.abien.samples.di.client.ClientAnnotationBean</implementation-class>
+    </service>
+  </services>
+  <clients/>
+</jax-ws>

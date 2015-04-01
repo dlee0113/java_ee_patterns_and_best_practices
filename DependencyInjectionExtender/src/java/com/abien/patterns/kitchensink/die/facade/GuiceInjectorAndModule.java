@@ -1,0 +1,55 @@
+/**
+This file is part of javaee-patterns.
+
+javaee-patterns is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+javaee-patterns is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.opensource.org/licenses/gpl-2.0.php>.
+
+* Copyright (c) 04. November 2009 Adam Bien, blog.adam-bien.com
+* http://press.adam-bien.com
+*/
+package com.abien.patterns.kitchensink.die.facade;
+
+import com.abien.patterns.kitchensink.die.guice.MessageProvider;
+import com.abien.patterns.kitchensink.die.guice.MessageProviderImpl;
+import com.google.inject.Binder;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.Module;
+import javax.annotation.PostConstruct;
+import javax.interceptor.AroundInvoke;
+import javax.interceptor.InvocationContext;
+
+/**
+ * @author adam-bien.com
+ */
+public class GuiceInjectorAndModule implements Module{
+
+    private Injector injector;
+
+    @PostConstruct
+    public void startupGuice(InvocationContext invocationContext) throws Exception{
+      invocationContext.proceed();
+      this.injector = Guice.createInjector(this);
+    }
+
+    @AroundInvoke
+    public Object injectDependencies(InvocationContext invocationContext) throws Exception{
+        this.injector.injectMembers(invocationContext.getTarget());
+        return invocationContext.proceed();
+    }
+
+    public void configure(Binder binder) {
+        binder.bind(MessageProvider.class).to(MessageProviderImpl.class);
+    }
+
+}
