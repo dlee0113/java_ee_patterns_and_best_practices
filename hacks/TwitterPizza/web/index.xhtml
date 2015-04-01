@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello Pizza / Twitter - This application has actually neither something to do with Twitter, nor Pizza.<br/>
+        It's just a compilable answer to all questions during the <a href="http://www.adam-bien.com/roller/abien/entry/real_time_java_ee_6" target="_blank">JUG Berlin meeting at 25.01.2011</a>.<br/>
+        <h:form>
+            <h:inputText value="#{index.pizza.name}"/>
+            <h:commandButton action="#{index.save}" value="Save"/>
+        </h:form>
+        #{index.pizza}
+    </h:body>
+</html>
+

@@ -1,0 +1,1 @@
+curl -X POST -H "Content-type:text/plain" --data "some payload" http://localhost:8080/threads-in-javaee/resources/events

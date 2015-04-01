@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <body>
+        This text above will not be displayed.
+        <ui:composition template="/template.xhtml">
+            This text will not be displayed.
+            <ui:define name="title">
+                Gateway example
+            </ui:define>
+            This text will also not be displayed.
+            <ui:define name="body">
+                <h:form>
+                    <h:outputLabel value="Shipping cost:"/><h:outputText value="#{load.shippingCost}"/><br/>
+                    <h:outputLabel value="Number of items:"/><h:outputText value="#{load.numberOfItems}"/><br/>
+                    <h:outputLabel value="Standard item weight:"/><h:inputText value="#{load.standardWeight}"/>
+                    <h:outputLabel value="Light item weight:"/><h:inputText value="#{load.lightWeight}"/>
+                    <h:outputLabel value="Bulky item weight:"/><h:inputText value="#{load.bulkyWeight}"/><br/>
+                    <h:commandButton action="#{load.dropLightest}" value="Remove lightest load" disabled="#{load.emptyLoad}"/>
+                    <h:commandButton action="#{load.dropHeaviest}" value="Remove heaviest load" disabled="#{load.emptyLoad}"/>
+                    <h:commandButton action="#{load.createLoad}" value="Create a new load"/>
+                </h:form>
+            </ui:define>
+            This text will not be displayed.
+        </ui:composition>
+        This text below will also not be displayed.
+    </body>
+</html>
+
